@@ -32,7 +32,8 @@ def login():
         if account:
             session['logeado'] = True
             session['id'] = account['idusu']
-            return render_template('inicio.html')  
+            session['rol'] = account['fk_id_rol']
+            return redirect('/inicio')  
         else:   
             flash('Nombre de usuario o contraseña incorrectos')
         
@@ -40,8 +41,16 @@ def login():
 
 
 
-
-
+@app.route("/inicio")
+def inicio():
+    if 'logeado' in session and 'rol' in session:
+        if session['rol'] == 1:
+            return render_template('inicio.html')
+        elif session['rol'] == 2:
+            return render_template('cliente.html')
+    
+    # Si no se cumple ninguna condición, devolver algo (puede ser un redirect, un render_template, etc.)
+    return redirect('/login')
 app.register_blueprint(ORDEN)
 app.register_blueprint(vehiculo1)
 app.register_blueprint(usuario)
