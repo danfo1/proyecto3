@@ -34,6 +34,32 @@ def vehiculo():
     return render_template('vehiculo/rvehiculo.html')
 
 
+@vehiculo1.route('/vehiculo.consultar_vehiculo', methods=['GET', 'POST'])
+def consultar_vehiculo():
+    try:
+        cursor = mysql.connection.cursor()
+        vehiculo = []
+
+        if request.method == "POST" and 'txtBuscar' in request.form:
+            search_query = '%' + request.form['txtBuscar'] + '%'
+            print("Valor de búsqueda:", search_query)
+            cursor.execute("SELECT id_vehiculo, modelo, marca, color, placa, cilindraje, kilometraje, referencia, tipo_conbustible FROM vehiculo WHERE placa LIKE %s", (search_query,))
+        else:
+            cursor.execute("SELECT id_vehiculo, modelo, marca, color, placa, cilindraje, kilometraje, referencia, tipo_conbustible FROM vehiculo")
+
+        vehiculo = cursor.fetchall()
+        cursor.close()
+
+        # Depurar datos recuperados
+        print("Usuarios:", vehiculo)
+
+        return render_template("vehiculo/consultar_vehiculo.html", vehiculo=vehiculo)
+
+    except Exception as e:
+        print("Error en la consulta SQL:", str(e))
+        return "Error en la consulta SQL. Por favor, verifica la base de datos y la consulta."
+
+
 @vehiculo1.route("/vehiculo.editar_vehiculo/<int:id_vehiculo>", methods=['GET', 'POST'])
 def editar_vehiculo(id_vehiculo):
     if request.method == 'GET':

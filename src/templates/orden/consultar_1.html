@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/consultar.css">
+    <title>Registros Usuarios</title>
+    <script src="https://kit.fontawesome.com/82559006af.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="volver">
+        <a href="../inicio.html">
+            <i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
+        </a>
+    </div>
+    <div class="titulo">
+        <p> Gestión Usuarios </p>
+    </div>
+    <div class="container">
+        <form method="POST" action="/ORDEN.consultar">
+            <div class="serch" name="Buscar">
+                <input type="text" name="txtBuscar" placeholder="Buscar">
+                <div class="btn">
+                    <i class="fa fa-search"></i>
+                </div>
+            </div>
+        </form>
+        <table class="table_usu">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Placa</th>
+                    <th>Descripción</th>
+                    <th>Radio</th>
+                    <th>Antena</th>
+                    <th>Encendedor</th>
+                    <th>Tapetes</th>
+                    <th>Soat</th>
+                    <th>Grua</th>
+                    <th>Estado de llantas</th>
+                    <th>Llave de pernos </th>
+                    <th>Llanta de repuesto</th>
+                    <th>Tapa de gasolina </th>
+                    <th>Herramientas</th>
+                    <th>Kit de carretera</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="datos">
+                {% for orden in orden %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ orden.placa }}</td>
+                        <td>{{ orden.descripcion }}</td>
+                        <td>{{ orden.radio }}</td>
+                        <td>{{ orden.antena }}</td>
+                        <td>{{ orden.encendedor }}</td>
+                        <td>{{ orden.tapetes }}</td>
+                        <td>{{ orden.soat }}</td>
+                        <td>{{ orden.grua }}</td>
+                        <td>{{ orden.estado_llantas }}</td>
+                        <td>{{ orden.llave_pernos }}</td>
+                        <td>{{ orden.llanta_repuesto }}</td>
+                        <td>{{ orden.tapa_gasolina }}</td>
+                        <td>{{ orden.herramientas }}</td>
+                        <td>{{ orden.kit_carretera }}</td>
+                        <td>
+                            <div class="direct"> 
+                                <a href="/ORDEN.editar_orden/{{ orden.id_orden }}">
+                                    <i class="fa-solid fa-pen-to-square" style="color: #ffffff;"></i>
+                                </a>
+                            </div> 
+                        </td> 
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/ORDEN.registrarorden">
+            <button class="registro">Crear Orden</button> 
+        </a>
+    </div>
+</body>
+</html>

@@ -18,8 +18,8 @@
             <div class="caja">
               <a href="./home.html#fondocarrusel">Inicio</a>
               <a href="./home.html#fondovista2">Servicios</a>
-              <a href="./home.html#fondovista3">Conocenos</a>
-              <a href="./login.html">Iniciar sesion</a>
+              <a href="./home.html#fondovista3">Conócenos</a>
+              <a href="./login.html">Iniciar sesión</a>
           </div>
           </nav>
       </header>
@@ -38,27 +38,21 @@
             <form class="form" action="/login" method="POST">
                 <i class="fa-solid fa-users" style="color: #ffffff;"></i>
                 <div class="input-box">
-                    <samp class="icon" class="form-input" name="usuario"></samp>
+                    <samp class="icon form-input" name="usuario"></samp>
                     <input type="text" name="usuario" required>
                     <label>Ingrese su usuario</label>
                 </div>
-                <div class="input-box" >
-                    <samp class="icon" class="form-input" name="contrasena"></samp>
+                <div class="input-box">
+                    <samp class="icon form-input" name="contrasena"></samp>
                     <input type="password" name="contrasena" required>
                     <label>Ingrese su contraseña</label>
                 </div>
                 <div class="forgot">
-                    <a href="#">¿Olvidó su contraseña?</a>
+                    <a href="{{ url_for('usuario.correo') }}">¿Olvidó su contraseña?</a>
                 </div>
                 <button type="submit">Iniciar</button>
             </form>
         </div>
     </div>
 </body>
-</html>
-
-
-
-
-
 </html>

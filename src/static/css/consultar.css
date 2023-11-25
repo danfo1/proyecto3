@@ -1,18 +1,18 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
 }
 
-
-body{
-    height: auto; 
+body {
+    height: auto;
     background: url(../imgs/fondoimg/fondo2.jpeg);
     background-size: cover;
     font-family: 'Roboto Condensed', sans-serif;
 }
-.volver{
+
+.volver {
     position: relative;
     top: 30px;
     width: 50px;
@@ -22,76 +22,63 @@ body{
     align-items: center;
     display: flex;
 }
-.volver i{
+
+.volver i {
     font-size: 3rem;
 }
 
-.titulo{
+.titulo {
     font-size: 26px;
     font-weight: 600;
     text-align: center;
     padding-top: 25px;
     color: white;
     border-bottom: solid 1px white;
-
 }
-/*BUSCADOR*/
 
-.serch{
-	position: absolute;
+.serch {
+    position: absolute;
     top: 50px;
-	left: 80%;
-	transform: translate(-50%,-50%);
-	padding: 10px;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
 }
 
 input {
-	outline: none;
-	box-sizing: border-box;
-	height: 40px;
-	width: 350px;
-	padding: 0 20px;
-	color: #000;
-	border-radius: 50px;
-	font-size: 20px;
-	border: 1px solid #D50000;
-	transition: all .7s ease;
-}
-
-::placeholder {
-	color: grey;
+    outline: none;
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%; /* Modificado */
+    max-width: 350px; /* Nuevo */
+    padding: 0 20px;
+    color: #000;
+    border-radius: 50px;
+    font-size: 20px;
+    border: 1px solid #D50000;
+    transition: all .7s ease;
 }
 
 .btn {
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	width: 60px;
-	height: 60px;
-	background-color: #D50000;
-	line-height: 60px;
-	border-radius: 50%;
-	text-align: center;
-	transition: .5s;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 60px;
+    height: 60px;
+    background-color: #D50000;
+    line-height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    transition: .5s;
 }
 
 .btn i {
-	font-size: 25px;
-	color: white;
-	line-height: 60px;
-	transition: all .7s ease;
-}
-/*
-.serch:hover input {
-	width: 350px;
-}*/
-
-.serch:hover i{
-	transform: rotate(-360deg);
+    font-size: 25px;
+    color: white;
+    line-height: 60px;
+    transition: all .7s ease;
 }
 
-/*...*/
-.container{
+.container {
     width: 95%;
     margin: 20px 0;
     background: rgba(0, 0, 0, 0.5);
@@ -103,8 +90,7 @@ input {
     border: 2px solid white;
 }
 
-
-.table_usu{
+.table_usu {
     font-size: 15px;
     text-align: center;
     padding-top: 6px;
@@ -115,7 +101,8 @@ input {
     position: relative;
     right: 35px;
 }
-.registro{
+
+.registro {
     background-color: #8a0e0e;
     color: #fff;
     padding: 10px 10px;
@@ -128,22 +115,35 @@ input {
     left: 83%;
     top: 50px;
 }
-.registro:hover{
+
+.registro:hover {
     background-color: #fa0404;
 }
+
 #searchInput {
     border: none;
     outline: none;
     width: 80%;
+    max-width: 350px; /* Nuevo */
     margin-bottom: 20px;
     background-color: transparent;
     color: white;
     border-bottom: 2px solid #fa0404;
     color: white;
 }
-.direct{
+
+.direct {
     display: flex;
+    flex-wrap: wrap; /* Nuevo */
 }
-.direct a{
+
+.direct a {
     margin-left: 15px;
+    margin-bottom: 15px; /* Nuevo */
+}
+.table_vehiculo{
+
+    
+    width: 100%;
+    text-align: center;
 }

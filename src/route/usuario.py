@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, session , flash , Blueprint
 import os
-from flask_mysqldb import MySQL
 
+from flask import (Blueprint, Flask, flash, redirect, render_template, request,
+                   session)
+from flask_mysqldb import MySQL
 
 usuario=Blueprint('usuario',__name__)
 template_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
@@ -37,7 +38,7 @@ def consultar():
         print("Error en la consulta SQL:", str(e))
         return "Error en la consulta SQL. Por favor, verifica la base de datos y la consulta."
     
-@usuario.route("/correo", methods=['GET', 'POST'])
+@usuario.route("/usuario.correo", methods=['GET', 'POST'])
 def correo():
     if request.method == 'POST':
         correo = request.form.get('correo')
@@ -77,7 +78,7 @@ def actualizar_contraseña():
         session.clear()
         flash("Contraseña actualizada con éxito", 'success')
     
-    return redirect('/correo')
+    return redirect('usuario.correo')
     
 
 @usuario.route('/usuario.registrar', methods=['GET', 'POST'])
@@ -131,19 +132,19 @@ def editar(idusu):
         num_documento = request.form.get('num_documento')
         correo = request.form.get('correo')
         telefono = request.form.get('telefono')
-        telefeno_respaldo = request.form.get('telefeno_respaldo')
+        telefono_respaldo = request.form.get('telefono_respaldo')
         estado = request.form.get('estado')
         contrasena = request.form.get('contrasena')
         nombreusu = request.form.get('nombreusu')
         rol = request.form.get('rol')
         
         cursor = mysql.connection.cursor()
-        sql = ("UPDATE usuario SET nombres = %s, apellidos = %s, tipo_documento = %s, num_documento = %s, correo = %s, telefono = %s, telefeno_respaldo = %s, estado = %s, contrasena = %s, nombreusu = %s WHERE idusu = %s")
-        data = (nombres, apellidos, tipo_documento, num_documento, correo, telefono, telefeno_respaldo , estado, contrasena, nombreusu, rol)
+        sql = ("UPDATE usuario SET nombres = %s, apellidos = %s, tipo_documento = %s, num_documento = %s, correo = %s, telefono = %s, telefono_respaldo= %s, estado = %s, contrasena = %s, nombreusu = %s WHERE idusu = %s")
+        data = (nombres, apellidos, tipo_documento, num_documento, correo, telefono, telefono_respaldo , estado, contrasena, nombreusu, rol)
         cursor.execute(sql, data)
         mysql.connection.commit()
         cursor.close()
-        return "Datos actualizados con éxito."
+        return redirect('/usuario.consultar')
 
     return render_template('usuario/editar.html', idusu=idusu)
 

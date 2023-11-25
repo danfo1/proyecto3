@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     box-sizing: border-box;
@@ -5,7 +6,7 @@
 }
 body{
     font-family: 'Roboto Condensed', sans-serif;
-    background-image: url(../../static/imgs/fondoimg/fondo2.jpeg);
+    background-image: url(../imgs/fondoimg/fondo2.jpeg);
 }
 /*MENU*/
 /*BARRA DE NAVEGACION HORIZONTAL*/
@@ -237,4 +238,52 @@ h1{
     .caja a{
         justify-content: space-between;
     }
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+}
+
+.modal-content p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button#noEnviarCorreosBtn {
+    background-color: #f44336;
+}
+
+button#noEnviarCorreosBtn:hover {
+    background-color: #d32f2f;
 }

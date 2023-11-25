@@ -26,7 +26,7 @@ body{
     display: flex;
 }
 .volver i{
-    font-size: 3rem;
+    font-size: 3em;
 }
 
 /* quitamos el max-width y ajustamos el tamaño con solo el width */

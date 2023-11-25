@@ -35,7 +35,7 @@
                         <ul class="elementos-sub">
 
                             <li class="elementos-li">
-                                <a href="#" class="anchor">Consultar vehículo</a>
+                                <a href="{{url_for('vehiculo.consultar_vehiculo')}}" class="anchor">Consultar vehículo</a>
                             </li>
                         </ul>
                     </div>
@@ -67,7 +67,9 @@
         <div class="caja">
           <a href="./inicioClientes.html">Inicio</a>
           <a href="./perfil.html">Perfil</a>
-          <a href="./login.html">Cerrar Sesion</a>
+          <a href="{{url_for('seguimiento')}}">seguimiento</a>
+          <a href="{{url_for('logout')}}">Cerrar Sesion</a>
+          
       </div>
       </nav>
 

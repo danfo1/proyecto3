@@ -49,15 +49,11 @@
 
                             <ul class="elementos-sub">
     
+                                
                                 <li class="elementos-li">
-                                    <a href="#" class="anchor">Crear orden de trabajo</a>
+                                    <a href="{{url_for('ORDEN.consultar_orden_trabajo')}}" class="anchor">Consultar orden de trabajo</a>
                                 </li>
-                                <li class="elementos-li">
-                                    <a href="#" class="anchor">Consultar orden de trabajo</a>
-                                </li>
-                                <li class="elementos-li">
-                                    <a href="#" class="anchor">Modificar orden de trabajo</a>
-                                </li>
+                                
     
                             </ul>
                         </div>
@@ -91,9 +87,7 @@
                     </li>
                     <!--ESTE ELEMENTO ES DESPLEGABLE-->
                     <li class="element">
-                        <a href="./inicio" class="elementolink">
-                        <span class="elementoslispan">Cerrar Sesion</span>
-                        </a>
+                        
                     </li>
                 </ul>
 
@@ -103,11 +97,82 @@
             <div class="caja">
               <a href="./inicio">Inicio</a>
               <a href="#">Perfil</a>
-              <a href="./login">Cerrar Sesion</a>
+              <a href="{{url_for('logout')}}">Cerrar Sesion</a>
           </div>
           </nav>
 
+
 <!--VISTA PRINCIPAL-->
+
+<div class="bienvenido">
+    <h1>BIENVENIDO <br><p>A</p></br></h1>
+    <img src="../static/imgs/logomec/logo.png" alt="Logo mec-car gt">
+</div>
+<script charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function () {
+        var mostrarAlertaCorreos = true; // Asegúrate de establecer este valor correctamente
+        console.log("Valor de mostrar_alerta_correos:", mostrarAlertaCorreos);
+        if (mostrarAlertaCorreos) {
+            // Muestra el modal para preguntar al usuario si desea enviar correos
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+
+            // Captura la respuesta del usuario al cerrar el modal
+            var enviarCorreosBtn = document.getElementById('enviarCorreosBtn');
+            var noEnviarCorreosBtn = document.getElementById('noEnviarCorreosBtn');
+
+            enviarCorreosBtn.onclick = function () {
+                // Realiza la solicitud para enviar correos
+                aceptarEnvioCorreo();
+                modal.style.display = 'none';
+            };
+
+            noEnviarCorreosBtn.onclick = function () {
+                modal.style.display = 'none';
+            };
+        }
+    });
+
+    function aceptarEnvioCorreo() {
+        var datos = {
+            destinatario: "vtovarcapera19@gmail.com",
+            asunto: "Mantenimiento preventivo",
+            mensaje: "Tu vehículo procede a tener un mantenimiento preventivo"
+        };
+
+        fetch('/enviar-correos-usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(datos)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Verifica la respuesta en la consola
+            if (data.success) {
+                alert('Correo enviado exitosamente');
+            } else {
+                alert('Error al enviar el correo: ' + data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error al enviar la solicitud:', error);
+            alert('Error al enviar el correo. Consulta la consola para más detalles.');
+        });
+    }
+</script>
+
+
+<!-- Agrega el modal al final del cuerpo de tu documento -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <p>¿Deseas enviar correos?</p>
+        <button id="enviarCorreosBtn">Sí</button>
+        <button id="noEnviarCorreosBtn">No</button>
+    </div>
+</div>
+
     <div class="bienvenido">
         <h1>BIENVENIDO <br><p>A</p></br></h1>
         <img src="../static/imgs/logomec/logo.png" alt="Logo mec-car gt">

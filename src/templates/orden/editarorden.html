@@ -9,7 +9,12 @@
 </head>
 <body>
     <h1>Editar Orden de Trabajo</h1>
-    <form class="form" action="{{ url_for('orden.editar_orden', id_orden=data.id_orden) }}" method="POST">
+    <form class="form" action="{{url_for('ORDEN.editar_orden', id_orden=data.id_orden) }}" method="POST">
+        
+
+        <label for="placa">Placa:</label>
+                <input type="text" id="placa" name="placa" value="{{data.placa}}" required><br><br>
+
         <label for="descripcion">Descripción:</label>
         <input type="text" id="descripcion" name="descripcion" value="{{ data.descripcion }}" required><br><br>
 
